@@ -1,0 +1,15 @@
+  <form class="example-form">
+    <mat-form-field class="example-full-width">
+      <input type="text" placeholder="choose an artist" aria-label="Number" matInput #searchInput 
+      (keyup)="searchArtistesByKey(searchInput.value)" 
+      required  [matAutocomplete]="auto">
+      <mat-autocomplete #auto="matAutocomplete">
+        <mat-option *ngFor="let artiste of (artistes$ | async)" [value]="artiste?.name" >
+          {{artiste?.name}}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+    <button (click)="getData(searchInput.value)">Search</button>
+  </form>
+
+ 
